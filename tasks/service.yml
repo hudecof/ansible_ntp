@@ -1,0 +1,5 @@
+---
+- name: ensure ntp started/stopped
+  service: name={{ ntp_service }} state={{ ntp_service_state }} enabled={{ ntp_service_enabled }}
+  tags:
+   - service

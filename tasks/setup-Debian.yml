@@ -1,0 +1,8 @@
+---
+- name: "check packages (debian)"
+  action: apt pkg={{ item }} state={{ ntp_pkg_state }}
+  tags:
+    - ntp
+    - setup
+  with_items: "{{ ntp_packages }}"
+

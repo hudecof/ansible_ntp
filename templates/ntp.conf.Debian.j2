@@ -1,0 +1,9 @@
+{% include 'ntp.conf.default.j2' %}
+
+### debian section
+{% if ntp_conf_interface|count %}
+interface ignore all
+{% for item in ntp_conf_interface %}
+interface listen {{ item }}
+{% endfor %}
+{% endif %}

@@ -1,0 +1,24 @@
+# {{ ansible_managed }}
+
+### common secion
+driftfile {{ ntp_file_drift }}
+
+### server section
+{% for item in ntp_conf_server %}
+server {{ item }}
+{% endfor %}
+server  127.127.1.0     # local clock
+fudge   127.127.1.0 stratum 10
+
+### restrict section
+{% for item in ntp_conf_restict %}
+restrict {{ item }}
+{% endfor %}
+
+
+### statisctics section
+statsdir {{ ntp_dir_stats }}
+statistics {{ ntp_conf_statistics|join(' ') }}
+{% for item in ntp_conf_statistics %}
+filegen {{ item }} file {{ item }} type day enable
+{% endfor %}
