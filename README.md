@@ -12,7 +12,7 @@ Role Variables
 --------------
 
 For list of role variables see the `defaults/main.yml`. These could be changes in host_vars/group_vars settings.
-The OS specific variabels are located in `vars/Debian.yml` and `vars/redHat.yml`.
+The OS specific variables are located in `vars/Debian.yml` and `vars/redHat.yml`.
 
 Dependencies
 ------------
