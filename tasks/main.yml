@@ -17,6 +17,10 @@
 - include: setup-RedHat.yml
   when: "ansible_os_family == 'RedHat'"
 
+# Suse(setup) specific tasks
+- include: setup-Suse.yml
+  when: "ansible_os_family == 'Suse'"
+
 # Common configuration tasks tasks
 - include: config.yml
 
