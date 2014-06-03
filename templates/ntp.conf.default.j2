@@ -16,9 +16,11 @@ restrict {{ item }}
 {% endfor %}
 
 
+{% if ntp_conf_statistics %}
 ### statisctics section
 statsdir {{ ntp_dir_stats }}
 statistics {{ ntp_conf_statistics|join(' ') }}
 {% for item in ntp_conf_statistics %}
 filegen {{ item }} file {{ item }} type day enable
 {% endfor %}
+{% endif %}
