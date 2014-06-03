@@ -1,0 +1,10 @@
+---
+ntp_packages:
+  - yast2-ntp-client
+  - ntp
+
+ntp_service: ntp
+
+ntp_file_conf: /etc/ntp.conf
+ntp_file_drift: /var/lib/ntp/drift/ntp.drift
+ntp_dir_stats: /tmp
