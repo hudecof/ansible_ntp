@@ -24,3 +24,11 @@ statistics {{ ntp_conf_statistics|join(' ') }}
 filegen {{ item }} file {{ item }} type day enable
 {% endfor %}
 {% endif %}
+
+{% if ntp_disable_monitor %}
+# Disable the monitoring facility to prevent amplification attacks using ntpdc
+# monlist command when default restrict does not include the noquery flag. See
+# CVE-2013-5211 for more details.
+# Note: Monitoring will not be disabled with the limited restriction flag.
+disable monitor
+{% endif %}
