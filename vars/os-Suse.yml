@@ -1,7 +1,7 @@
 ---
 ntp_packages:
-  - yast2-ntp-client
-  - ntp
+  - {'name': 'ntp', 'state': 'present'}
+  - {'name': 'yast2-ntp-client', 'state': 'present'}
 
 ntp_service: ntp
 

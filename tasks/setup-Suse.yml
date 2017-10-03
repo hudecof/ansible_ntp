@@ -1,8 +1,6 @@
 ---
 - name: "check packages (suse)"
-  action: zypper pkg={{ item }} state={{ ntp_pkg_state }}
-  tags:
-    - ntp
-    - setup
+  action: zypper pkg={{ package.name }} state={{ package.state }}
   with_items: '{{ ntp_packages }}'
-
+  loop_control:
+    loop_var: package

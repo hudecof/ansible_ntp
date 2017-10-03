@@ -1,8 +1,6 @@
 ---
 - name: "check packages (redhat)"
-  action: yum pkg={{ item }} state={{ ntp_pkg_state }}
-  tags:
-    - ntp
-    - setup
+  action: yum pkg={{ package.name }} state={{ package.state }}
   with_items: '{{ ntp_packages }}'
-
+  loop_control:
+    loop_var: package

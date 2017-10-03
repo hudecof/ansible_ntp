@@ -1,7 +1,8 @@
 ---
 ntp_packages:
-  - ntp
-  - ntpdate
+  - {'name':'chrony', 'state':'absent'}
+  - {'name':'ntp', 'state':'present'}
+  - {'name':'ntpdate', 'state':'present'}
 
 ntp_service: ntpd
 

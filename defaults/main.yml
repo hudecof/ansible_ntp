@@ -28,4 +28,5 @@ ntp_conf_interface: []
 
 ntp_service_enabled: yes
 ntp_service_state: started
-ntp_pkg_state: present
+
+ntp_test: false

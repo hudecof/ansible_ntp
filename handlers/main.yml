@@ -2,3 +2,4 @@
 # handlers file for ntp
 - name: restart ntp
   service: name={{ ntp_service }} state=restarted
+  when: not ntp_test
