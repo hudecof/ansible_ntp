@@ -4,8 +4,5 @@
   with_first_found:
     - "ntp.conf.{{ ansible_os_family }}.j2"
     - "ntp.conf.default.j2"
-  tags:
-    - ntp
-    - config
   notify:
     - restart ntp

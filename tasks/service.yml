@@ -5,6 +5,3 @@
     state: "{{ ntp_service_state }}"
     enabled: "{{ ntp_service_enabled }}"
   when: not ntp_test
-  tags:
-    - ntp
-    - ntp:service
