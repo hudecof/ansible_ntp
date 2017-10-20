@@ -7,20 +7,48 @@ driftfile {{ ntp_file_drift }}
 {% for item in ntp_conf_server %}
 server {{ item }}
 {% endfor %}
+
+{% for item in ntp_conf_peer %}
+peer {{ item }}
+{% endfor %}
+{% for item in ntp_conf_broadcast %}
+broadcast {{ item }}
+{% endfor %}
+{% for item in ntp_conf_manycastclient %}
+manycastclient {{ item }}
+{% endfor %}
+{% for item in ntp_conf_pool %}
+pool {{ item }}
+{% endfor %}
+{% for item in ntp_conf_unpeer %}
+unpeer {{ item }}
+{% endfor %}
+
+ntp_conf_peer: []
+ntp_conf_broadcast: []
+ntp_conf_manycastclient: []
+ntp_conf_unpeer: []
+
 server  127.127.1.0     # local clock
 fudge   127.127.1.0 stratum 10
 
-### restrict section
 {% for item in ntp_conf_restict %}
 restrict {{ item }}
 {% endfor %}
 
-
-{% if ntp_conf_statistics %}
-### statisctics section
-statsdir {{ ntp_dir_stats }}
-statistics {{ ntp_conf_statistics|join(' ') }}
-{% for item in ntp_conf_statistics %}
-filegen {{ item }} file {{ item }} type day enable
+{% for item in ntp_conf_discard %}
+discard {{ item }}
 {% endfor %}
-{% endif %}
+
+enable {{ ntp_conf_enable|join(' ')}}
+disable {{ ntp_conf_disable|join(' ')}}
+
+statsdir {{ ntp_dir_stats }}
+{% for item in ntp_conf_filegen %}
+filegen {{ item }}
+{% endfor %}
+
+
+{% for item in ntp_conf_interface %}
+interface {{ item }}
+{% endfor %}

@@ -1,10 +1,10 @@
 ---
-ntp_packages:
+__ntp_packages:
   - {'name': 'ntp', 'state': 'present'}
   - {'name': 'yast2-ntp-client', 'state': 'present'}
 
-ntp_service: ntp
+__ntp_service: ntp
 
-ntp_file_conf: /etc/ntp.conf
-ntp_file_drift: /var/lib/ntp/drift/ntp.drift
-ntp_dir_stats: /tmp
+__ntp_file_conf: /etc/ntp.conf
+__ntp_file_drift: /var/lib/ntp/drift/ntp.drift
+__ntp_dir_stats: /tmp

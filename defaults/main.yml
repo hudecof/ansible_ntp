@@ -1,4 +1,13 @@
 ---
+ntp_packages: "{{ __ntp_packages }}"
+ntp_service: "{{ __ntp_service }}"
+
+ntp_file_conf: "{{ __ntp_file_conf }}"
+ntp_file_drift: "{{ __ntp_file_drift }}"
+ntp_dir_stats: "{{ __ntp_dir_stats }}"
+
+ntp_backup: True
+
 # defaults file for ntp
 
 ntp_conf_server:
@@ -6,6 +15,13 @@ ntp_conf_server:
   - 1.pool.ntp.org iburst
   - 2.pool.ntp.org iburst
   - 3.pool.ntp.org iburst
+ntp_conf_peer: []
+ntp_conf_broadcast: []
+ntp_conf_manycastclient: []
+ntp_conf_unpeer: []
+ntp_conf_pool: []
+
+
 
 # these are reaanoble defaults to act as clinet nad server
 # for client-mode only red the ntpd documentation
@@ -14,16 +30,15 @@ ntp_conf_restict:
   - "-6 default kod notrap nomodify nopeer noquery"
   - "127.0.0.1"
   - "::1"
+ntp_conf_discard: []
 
 # you may speficy list of: loopstats peerstats clockstats
 ntp_conf_statistics: []
+ntp_conf_filegen: []
 
 ntp_conf_enable: []
-ntp_conf_disable: []
+ntp_conf_disable: ['monitor']
 
-# this is debian specific
-# form manual page of the ntp.conf
-# interface [listen | ignore | drop] [all | ipv4 | ipv6 | wildcard | name | address[/prefixlen]]
 ntp_conf_interface: []
 
 ntp_service_enabled: yes
