@@ -10,34 +10,22 @@
     - ntp:config
 
 # Debian(setup) specific tasks
-- include: setup-Debian.yml
-  when: "ansible_os_family == 'Debian'"
-  tags:
-    - ntp
-    - ntp:setup
-
-# RedHat(setup) specific tasks
-- include: setup-RedHat.yml
-  when: "ansible_os_family == 'RedHat'"
-  tags:
-    - ntp
-    - ntp:setup
-
-# Suse(setup) specific tasks
-- include: setup-Suse.yml
-  when: "ansible_os_family == 'Suse'"
+- name: include setup tasks
+  include: setup-{{ ansible_os_family }}.yml
   tags:
     - ntp
     - ntp:setup
 
 # Common configuration tasks tasks
-- include: config.yml
+- name: include config tasks
+  include: config.yml
   tags:
     - ntp
     - ntp:config
 
 # Common service tasks
-- include: service.yml
+- name: include service tasks
+  include: service.yml
   tags:
     - ntp
     - ntp:service

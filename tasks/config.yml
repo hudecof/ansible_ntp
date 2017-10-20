@@ -1,8 +1,11 @@
 ---
 - name: "setup ntp.conf"
-  action: template src={{ item }} dest={{ ntp_file_conf }} backup=no owner=root group=root mode=0640
-  with_first_found:
-    - "ntp.conf.{{ ansible_os_family }}.j2"
-    - "ntp.conf.default.j2"
+  template:
+    src: ntp.conf.default.j2
+    dest: "{{ ntp_file_conf }}"
+    backup: "{{ ntp_backup }}"
+    owner: root
+    group: root
+    mode: 0640
   notify:
     - restart ntp
