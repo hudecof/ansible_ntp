@@ -1,2 +1,54 @@
 ---
 # vars file for ntp
+
+# TODO: server/fudge from ntp_clock
+
+ntp_config_directives:
+  - {'name': 'server', 'type': 'l', 'default': null}
+  - {'name': 'peer', 'type': 'l', 'default': null}
+  - {'name': 'broadcast', 'type': 'l', 'default': null}
+  - {'name': 'manycastclient', 'type': 'l', 'default': null}
+  - {'name': 'pool', 'type': 'l', 'default': null}
+  - {'name': 'unpeer', 'type': 'l', 'default': null}
+
+  - {'name': 'broadcastclient', 'type': 's', 'default': null}
+  - {'name': 'manycastserver', 'type': 'l', 'default': null}
+  - {'name': 'multicastclient', 'type': 'l', 'default': null}
+
+  - {'name': 'driftfile', 'type': 's', 'default': null}
+  - {'name': 'enable', 'type': 'l', 'default': null}
+  - {'name': 'disable', 'type': 'l', 'default': null}
+  - {'name': 'includefile', 'type': 'l', 'default': null}
+  - {'name': 'interface', 'type': 'l', 'default': null}
+  - {'name': 'leapfile', 'type': 's', 'default': null}
+  - {'name': 'logconfig', 'type': 's', 'default': null}
+  - {'name': 'logfile', 'type': 's', 'default': null}
+  - {'name': 'phone', 'type': 's', 'default': null}
+  - {'name': 'setvar', 'type': 'l', 'default': null}
+  - {'name': 'tinker', 'type': 's', 'default': null}
+  - {'name': 'stepback', 'type': 's', 'default': null}
+  - {'name': 'trap', 'type': 's', 'default': null}
+  - {'name': 'ttl', 'type': 's', 'default': null}
+  - {'name': 'dscp', 'type': 's', 'default': null}
+
+
+  - {'name': 'automax', 'type': 's', 'default': null}
+  - {'name': 'controlkey', 'type': 's', 'default': null}
+  - {'name': 'crypto', 'type': 'l', 'default': null}
+  - {'name': 'keys', 'type': 's', 'default': null}
+  - {'name': 'keysdir', 'type': 's', 'default': null}
+  - {'name': 'requestkey', 'type': 's', 'default': null}
+  - {'name': 'revoke', 'type': 's', 'default': null}
+  - {'name': 'trustedkey', 'type': 'l', 'default': null}
+
+
+  - {'name': 'filegen', 'type': 'l', 'default': null}
+  - {'name': 'statsdir', 'type': 's', 'default': null}
+
+  - {'name': 'discard', 'type': 's', 'default': null}
+  - {'name': 'restrict', 'type': 'l', 'default': null}
+
+
+  - {'name': 'discard', 'type': 's', 'default': null}
+  - {'name': 'discard', 'type': 's', 'default': null}
+  - {'name': 'discard', 'type': 's', 'default': null}

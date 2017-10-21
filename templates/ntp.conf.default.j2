@@ -1,54 +1,30 @@
 {{ ansible_managed | comment }}
 
-### common secion
-driftfile {{ ntp_file_drift }}
-
-### server section
-{% for item in ntp_conf_server %}
-server {{ item }}
+{% macro print_list(item_name, item_values=None, ident=0, comment=False) -%}
+{% if item_values is not none -%}
+{% for value in item_values|default([], true) -%}
+{{"\t" * ident}}{{ item_name }} {{ value }}
 {% endfor %}
+{%- elif comment %}
+{{"\t" * ident}}# {{ item_name }}
+{%- endif %}
+{%- endmacro %}
 
-{% for item in ntp_conf_peer %}
-peer {{ item }}
-{% endfor %}
-{% for item in ntp_conf_broadcast %}
-broadcast {{ item }}
-{% endfor %}
-{% for item in ntp_conf_manycastclient %}
-manycastclient {{ item }}
-{% endfor %}
-{% for item in ntp_conf_pool %}
-pool {{ item }}
-{% endfor %}
-{% for item in ntp_conf_unpeer %}
-unpeer {{ item }}
-{% endfor %}
+{% macro print_scalar(item_name, item_value=None, ident=0, comment=False) -%}
+{% if item_value is not none %}
+{{"\t" * ident}}{{ item_name }} {{ item_value }}
+{%- elif comment %}
+{{"\t" * ident}}# {{ item_name }}
+{%- endif %}
+{%- endmacro %}
 
-ntp_conf_peer: []
-ntp_conf_broadcast: []
-ntp_conf_manycastclient: []
-ntp_conf_unpeer: []
-
-server  127.127.1.0     # local clock
-fudge   127.127.1.0 stratum 10
-
-{% for item in ntp_conf_restict %}
-restrict {{ item }}
-{% endfor %}
-
-{% for item in ntp_conf_discard %}
-discard {{ item }}
-{% endfor %}
-
-enable {{ ntp_conf_enable|join(' ')}}
-disable {{ ntp_conf_disable|join(' ')}}
-
-statsdir {{ ntp_dir_stats }}
-{% for item in ntp_conf_filegen %}
-filegen {{ item }}
-{% endfor %}
-
-
-{% for item in ntp_conf_interface %}
-interface {{ item }}
+{% for item in ntp_config_directives %}
+{% set inv_key = "ntp_conf_"+item.name %}
+{% set inv_key_os = "__ntp_conf_"+item.name %}
+{% set inv_value = vars[inv_key]|default(vars[inv_key_os])|default(item.default) %}
+{% if item.type == 'l' %}
+{{ print_list(item.name, inv_value,0, True) }}
+{% elif item.type == 's' %}
+{{ print_scalar(item.name, inv_value,0, True) }}
+{% endif %}
 {% endfor %}

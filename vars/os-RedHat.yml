@@ -7,5 +7,13 @@ __ntp_packages:
 __ntp_service: ntpd
 
 __ntp_file_conf: /etc/ntp.conf
-__ntp_file_drift: /var/lib/ntp/ntp.drift
-__ntp_dir_stats: /var/log/ntpstats
+
+
+__ntp_conf_driftfile: /var/lib/ntp/drift
+__ntp_conf_statsdir: /var/log/ntpstats
+
+__ntp_conf_pool:
+  - 0.centos.pool.ntp.org iburst
+  - 1.centos.pool.ntp.org iburst
+  - 2.centos.pool.ntp.org iburst
+  - 3.centos.pool.ntp.org iburst
