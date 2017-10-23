@@ -1,30 +1,33 @@
-Role Name
-========
+# NTP
 
 Ansible role to setup ntp service
 
-Requirements
-------------
+## Requirements
 
-This role requires Ansible 1.4 or higher, and platform requirements are listed in the metadata file.
+- ansible: version 2 and higher
 
-Role Variables
---------------
+## Role Variables
 
-For list of role variables see the `defaults/main.yml`. These could be changes in host_vars/group_vars settings.
-The OS specific variables are located in `vars/os-Debian.yml` and `vars/os-RedHat.yml`.
+in the variable `ntp_config_directives` defined in `vars/main.yml` are defined all supported `ntp.conf` variables with defautls. For each variable there is **name**, **type** and **default value**. 
 
-Dependencies
-------------
+To override the the default value set varibale `ntp_conf_<name>`, see some defaults in `defautls/main.yml`
+
+If the type is
+
+- **s** / **scalar**: use value enclosed in double quote, since values like **yes** and **no** have special meaning.
+- **l** / **list**: use YAML list syntax, like `['val1', 'val2']`
+
+There are some OS specific variables, which are defined in variables `__ntp_conf_<name>` in `vars/os-<distribution>` but still could be overwriten.
+
+## Dependencies
 
 None
-License
--------
+
+## License
 
 BSD
 
-Author Information
-------------------
+## Author Information
 
 Peter Hudec
 CNC, a.s.
