@@ -47,8 +47,3 @@ ntp_config_directives:
 
   - {'name': 'discard', 'type': 's', 'default': null}
   - {'name': 'restrict', 'type': 'l', 'default': null}
-
-
-  - {'name': 'discard', 'type': 's', 'default': null}
-  - {'name': 'discard', 'type': 's', 'default': null}
-  - {'name': 'discard', 'type': 's', 'default': null}
