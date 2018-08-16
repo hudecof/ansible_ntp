@@ -30,4 +30,3 @@ BSD
 ## Author Information
 
 Peter Hudec
-CNC, a.s.
