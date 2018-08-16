@@ -4,10 +4,7 @@
 - name: Add the OS specific varibles
   include_vars: "os-{{ ansible_os_family }}.yml"
   tags:
-    - ntp
-    - ntp:setup
-    - ntp:service
-    - ntp:config
+    - always
 
 # Debian(setup) specific tasks
 - name: include setup tasks
